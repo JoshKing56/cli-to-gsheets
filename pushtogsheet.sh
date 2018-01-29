@@ -1,4 +1,12 @@
 #!/bin/bash
+
+#TODO: https://archive.is/TRzn4 Rewrite structure with getops
+
+#Set default values
+FORMID=1N42kppOkVqbX5Ca4zluYjEJyKZNjZP9lPKfgTuzVzzU;
+FIELDNUM=1;
+FIELDNAME=2097356952;
+
 echo ""
 echo "Enter google form credentials"
 read -p "Form Id (in url): " FORMID
@@ -9,7 +17,7 @@ echo "Enter the field names and values. This is your html \"name\" attribute"
   for ((i=0;i<$FIELDNUM;i++)) #for some reason bash requires the (()) for for loops idk why
   do
     read -p "Field name $i: " FIELDS[$i]
-    read -p "Field value $i: " VALUES[$i] 
+    read -p "Field value $i: " VALUES[$i]
   done;
 
   for ((i=0;i<${#FIELDS[*]};i++))
