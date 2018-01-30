@@ -3,22 +3,16 @@
 #TODO: https://archive.is/TRzn4 Rewrite structure with getops
 
 #Set default values
-FORMID="1gcF_E81EpBX6DaSV8pBwKeEY6XCBxKLslwtIKwI8WAE";
-FIELDNUM=1;
-FIELDS[0]=713884440;
-
-echo ""
-echo "Enter google form credentials"
-#read -p "Form Id (in url): " FORMID
-#read -p  "Enter number of fields: " FIELDNUM
-
-#echo "Enter the field names and values. This is your html \"name\" attribute"
+FORMID=$(sed -n 's/FORMID: //p' formdata.conf); #like grep, but with different syntax.
+FIELDNUM=$(sed -n 's/FIELDNUM: //p' formdata.conf); #looks for everything matching "Everything after FIELDNUM:"
+FIELDS[0]=$(sed -n 's/FIELDS: //p' formdata.conf);
 
 for ((i=0;i<$FIELDNUM;i++)) #for some reason bash requires the (()) for for loops idk why
 do
-#  read -p "Field name $i: " FIELDS[$i]
+  #FIELDS[0]=$(sed -n 's/FIELDS[${i}]: //p' formdata.conf);
   read -p "Field value $i: " VALUES[$i]
 done;
+
 
 for ((i=0;i<${#FIELDS[*]};i++))
 do
