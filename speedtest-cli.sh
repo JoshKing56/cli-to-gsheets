@@ -16,6 +16,6 @@ while /bin/true; do
 
     bash pushtogsheet.sh
 
-    sleep 10m;
+    sleep 5m;
 
 done;
